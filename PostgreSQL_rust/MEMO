@@ -1,0 +1,28 @@
+https://qiita.com/takisawa/items/4327c5cb33a8d28ff5e9
+
+
+docker-compose up -d
+
+psql -h localhost -U postgres -c "\l"
+psql -h localhost -U postgres -c "CREATE DATABASE testdb"
+psql -h localhost -U postgres -c "\l"
+psql -h localhost -U postgres -c "\c testdb"
+psql -h localhost -U postgres -d testdb -c "create table users (id int, name varchar);"
+psql -h localhost -U postgres -d testdb -c "insert into users values (1, 'name1'), (2, 'name2');"
+psql -h localhost -U postgres -d testdb -c "select * from users ;"
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup
+
+vi src/main.rs
+*** main code  edit ***
+
+cargo run
+PostgreSQL_rust$ cargo run
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.17s
+     Running `target/debug/PostgreSQL_rust`
+1 name1
+2 name2
+
+
+

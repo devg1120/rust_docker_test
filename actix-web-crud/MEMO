@@ -1,0 +1,32 @@
+
+https://illumination-k.dev/techblog/post/61427e60-48c8-480b-bdbf-b5f846149c3a
+
+https://github.com/illumination-k/actix-web-crud
+
+Actix-Web + Diesel + PostgresでCRUDしてみた
+
+
+
+rustup update stable
+rustc --version
+ rustc 1.81.0 (eeb90cda1 2024-09-04)
+
+sudo apt install libpq-dev
+
+cargo install diesel_cli --no-default-features --features postgres
+
+ diesel setup
+
+ diesel migration generate  create_posts
+
+
+ diesel migration run
+
+ cargo run
+
+
+curl -H "Content-type: application/json" -X POST http://localhost:8080/posts -d '{ "title": "First post", "body": "this is first post for actix-web-crud" }'
+# Created!
+curl http://localhost:8080/posts
+# [{"id":1,"title":"First post","body":"this is first post for actix-web-crud","published":false}]
+
